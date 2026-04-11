@@ -1,4 +1,5 @@
 import express from "express";
+import { maskPII } from './masking'
 
 const app = express()
 app.use(express.json())
@@ -7,9 +8,10 @@ app.get('/api/health', (req, res) => {
 })
 app.post('/api/chat', (req, res) => {
     const { text } = req.body
+    const maskedText = maskPII(text)
     res.json({
         originalText: text,
-        maskedText: text,
+        maskedText: maskedText,
         response: 'Это мок-ответ от AI',
         tokensInput: 10,
         tokensOutput: 20,
