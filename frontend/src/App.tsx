@@ -1,10 +1,16 @@
+import { Route, Routes } from 'react-router-dom'
+import DashboardPage from './pages/DashboardPage'
+import AuditLogPage from './pages/AuditLogPage'
+import PlaygroundPage from './pages/PlaygroundPage'
 import './App.css'
 
 function App() {
   return (
-    <div>
-      <h1>AI Gateway</h1>
-    </div>
+    <Routes>
+      <Route path='/' element={<DashboardPage />} />
+      <Route path='/audit' element={<AuditLogPage />} />
+      <Route path='/playground' element={<PlaygroundPage />} />
+    </Routes>
   )
 }
 
