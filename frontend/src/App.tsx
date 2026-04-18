@@ -7,7 +7,7 @@ import './App.css'
 
 function App() {
   return (
-    <div>
+    <div className="bg-gray-950 min-h-screen text-white">
       <Navbar />
       <Routes>
         <Route path='/' element={<DashboardPage />} />
