@@ -6,3 +6,9 @@ export interface ChatResponse {
     tokensOutput: number,
     cost: number
 }
+
+export interface ChatInputProps {
+    text: string,
+    onChange: (value: string) => void,
+    onSubmit: () => void
+}

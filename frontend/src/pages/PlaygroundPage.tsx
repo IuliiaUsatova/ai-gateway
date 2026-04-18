@@ -1,7 +1,7 @@
 import { useState } from "react"
 import type { ChatResponse } from "../types"
 import { sendMessage } from "../api/chat"
-
+import ChatInput from '../components/ChatInput'
 
 function PlaygroundPage() {
 
@@ -15,8 +15,7 @@ function PlaygroundPage() {
     return (
         <div>
             <h1>Игровая площадка</h1>
-            <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-            <button onClick={handleSubmit}>Отправить</button>
+            <ChatInput text={text} onChange={setText} onSubmit={handleSubmit} />
             <div>{result && (
                 <div>
                     <p>Оригинал: {result.originalText}</p>
