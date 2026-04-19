@@ -1,4 +1,5 @@
 export interface ChatResponse {
+    id: string,
     originalText: string,
     maskedText: string,
     response: string,
