@@ -1,16 +1,23 @@
-import { useState } from "react"
-import { sendMessage } from "../api/chat"
+import { useState, useEffect } from "react"
+import { sendMessage, getLogs } from "../api/chat"
 import { useLogsStore } from '../stores/logsStore'
 import ChatInput from '../components/ChatInput'
 
 function AuditLogPage() {
 
-    const { logs, addLog } = useLogsStore()
+    const { logs, addLog, setLogs } = useLogsStore()
     const [text, setText] = useState('')
     async function handleSubmit() {
         const data = await sendMessage(text)
         addLog(data)
     }
+    useEffect(() => {
+        async function fetchLogs() {
+            const data = await getLogs()
+            setLogs(data)
+        }
+        fetchLogs()
+    }, [])
     return (
         <div className="p-8 max-w-3xl">
             <h1 className="text-2xl font-bold mb-6">Аудит</h1>
