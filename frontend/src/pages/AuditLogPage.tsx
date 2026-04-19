@@ -21,7 +21,9 @@ function AuditLogPage() {
                     <p className="text-white mb-2">{log.originalText}</p>
                     <p className="text-gray-400 text-sm mb-1">Маскировано</p>
                     <p className="text-green-400 mb-2">{log.maskedText}</p>
-                    <span className="text-blue-400 text-sm">${log.cost}</span>
+                    <p className="text-gray-400 text-sm mb-1">Ответ AI</p>
+                    <p className="text-white mb-2">{log.response}</p>
+                    <span className="text-blue-400 text-sm">${log.cost.toFixed(6)}</span>
                 </div>
             ))}
         </div>
