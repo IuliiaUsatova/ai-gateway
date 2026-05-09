@@ -13,10 +13,15 @@ function AuditLogPage() {
             return
         }
         setIsLoading(true)
-        const data = await sendMessage(text)
-        addLog(data)
-        setText('')
-        setIsLoading(false)
+        try {
+            const data = await sendMessage(text)
+            addLog(data)
+            setText('')
+        } catch (error) {
+            alert('Ошибка! Попробуйте ещё раз.')
+        } finally {
+            setIsLoading(false)
+        }
     }
     useEffect(() => {
         async function fetchLogs() {
