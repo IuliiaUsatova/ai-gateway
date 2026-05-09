@@ -9,6 +9,9 @@ function AuditLogPage() {
     const [text, setText] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     async function handleSubmit() {
+        if (text.trim() === '') {
+            return
+        }
         setIsLoading(true)
         const data = await sendMessage(text)
         addLog(data)
