@@ -7,9 +7,13 @@ function AuditLogPage() {
 
     const { logs, addLog, setLogs } = useLogsStore()
     const [text, setText] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     async function handleSubmit() {
+        setIsLoading(true)
         const data = await sendMessage(text)
         addLog(data)
+        setText('')
+        setIsLoading(false)
     }
     useEffect(() => {
         async function fetchLogs() {
@@ -21,7 +25,7 @@ function AuditLogPage() {
     return (
         <div className="p-8 max-w-3xl">
             <h1 className="text-2xl font-bold mb-6">Аудит</h1>
-            <ChatInput text={text} onChange={setText} onSubmit={handleSubmit} />
+            <ChatInput text={text} onChange={setText} onSubmit={handleSubmit} isLoading={isLoading} />
             {logs.map((log) => (
                 <div key={log.id} className="mt-4 bg-gray-800 rounded-xl p-4 border border-gray-700">
                     <p className="text-gray-400 text-sm mb-1">Оригинал</p>

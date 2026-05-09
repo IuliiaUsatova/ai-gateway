@@ -10,6 +10,7 @@ export interface ChatResponse {
 
 export interface ChatInputProps {
     text: string,
+    isLoading: boolean,
     onChange: (value: string) => void,
     onSubmit: () => void
 }

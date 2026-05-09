@@ -1,6 +1,6 @@
 import type { ChatInputProps } from '../types'
 
-function ChatInput({ text, onChange, onSubmit }: ChatInputProps) {
+function ChatInput({ text, onChange, onSubmit, isLoading }: ChatInputProps) {
     return (
         <div className="flex gap-3 mb-6">
             <input
@@ -12,9 +12,10 @@ function ChatInput({ text, onChange, onSubmit }: ChatInputProps) {
             />
             <button
                 onClick={onSubmit}
+                disabled={isLoading}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium"
             >
-                Отправить
+                {isLoading ? 'Загрузка' : 'Отправить'}
             </button>
         </div>
     )
