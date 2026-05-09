@@ -111,3 +111,6 @@ Dashboard shows: 1 leak prevented, $0.0001 spent
 ## Author
 
 Iuliia Usatova — Frontend Engineer
+
+## Live Demo
+🔗 [ai-gateway-sandy.vercel.app](https://ai-gateway-sandy.vercel.app)
