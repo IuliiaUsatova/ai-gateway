@@ -7,6 +7,7 @@ export async function sendMessage(text: string) {
 
 export async function getLogs() {
     const res = await apiClient.get('/api/logs')
+     if (!res.data) return []
     return res.data.map((log: any) => ({
         id: log.id.toString(),
         originalText: log.original_text,
