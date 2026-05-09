@@ -9,6 +9,11 @@ function DashboardPage() {
     return (
         <div className="p-8">
             <h1 className="text-2xl font-bold mb-6">Дашборд</h1>
+            <p className="text-gray-400 mb-6">
+                AI Gateway защищает персональные данные перед отправкой в OpenAI.
+                Попробуйте: вставьте текст с номером карты (например: <span className="text-white">4276 5500 1234 5678</span>),
+                email или телефоном на странице Аудит.
+            </p>
             <div className="grid grid-cols-3 gap-4">
                 <div className="bg-gray-800 rounded-xl p-6">
                     <p className="text-gray-400 text-sm">Всего запросов</p>
