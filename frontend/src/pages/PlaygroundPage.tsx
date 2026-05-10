@@ -13,7 +13,7 @@ function PlaygroundPage() {
     }
 
     return (
-        <div className="p-8 max-w-3xl">
+        <div className="p-4 md:p-8 max-w-3xl mx-auto">
             <h1 className="text-2xl font-bold mb-6">Игровая площадка</h1>
             <ChatInput text={text} onChange={setText} onSubmit={handleSubmit} />
             {result && (
