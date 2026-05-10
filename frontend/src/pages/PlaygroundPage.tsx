@@ -8,6 +8,7 @@ function PlaygroundPage() {
     const [result, setResult] = useState<ChatResponse | null>(null)
 
     async function handleSubmit() {
+        if (text.trim() === '') return
         const data = await sendMessage(text)
         setResult(data)
     }

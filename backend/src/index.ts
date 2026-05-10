@@ -21,6 +21,12 @@ app.get('/api/logs', async (req, res) => {
 
 app.post('/api/chat', async (req, res) => {
     const { text } = req.body
+
+     if (!text || text.trim() === '') {
+        res.status(400).json({ error: 'Текст не может быть пустым' })
+        return
+    }
+    
     const maskedText = maskPII(text)
     const aiResponse = await sendToOpenAI(maskedText)
 
