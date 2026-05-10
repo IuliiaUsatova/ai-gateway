@@ -5,6 +5,7 @@ import { useLogsStore } from './stores/logsStore'
 import DashboardPage from './pages/DashboardPage'
 import AuditLogPage from './pages/AuditLogPage'
 import PlaygroundPage from './pages/PlaygroundPage'
+import AuditLogViewerPage from './pages/AuditLogViewerPage'
 import Navbar from './components/Navbar'
 import './App.css'
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/' element={<DashboardPage />} />
         <Route path='/audit' element={<AuditLogPage />} />
         <Route path='/playground' element={<PlaygroundPage />} />
+        <Route path='/logs' element={<AuditLogViewerPage/>}></Route>
       </Routes>
     </div>
   )

@@ -7,6 +7,7 @@ function Navbar() {
             <Link to='/' className="text-gray-300 hover:text-white text-sm">Дашборд</Link>
             <Link to='/audit' className="text-gray-300 hover:text-white text-sm">Аудит</Link>
             <Link to='/playground' className="text-gray-300 hover:text-white text-sm">Игровая</Link>
+            <Link to='/logs'className="text-gray-300 hover:text-white text-sm">Логи</Link>
         </nav>
     )
 }
