@@ -1,10 +1,18 @@
+import { useState } from 'react'
 import { useLogsStore } from '../stores/logsStore'
 import RiskBadge from '../components/RiskBadge'
 
 function AuditLogViewerPage() {
     const { logs } = useLogsStore()
+    const [search, setSearch] = useState('')
+    const filteredLogs = logs.filter(log => log.originalText.toLowerCase().includes(search.toLowerCase()))
     return (
         <div className="overflow-x-auto">
+            <input type="text"
+                placeholder="Поиск по запросу..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white mb-4" />
             <table className="w-full text-sm">
                 <thead>
                     <tr className="border-b border-gray-700 text-gray-400">
@@ -16,7 +24,7 @@ function AuditLogViewerPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {logs.map((log) => (
+                    {filteredLogs.map((log) => (
                         <tr key={log.id} className="border-b border-gray-800 hover:bg-gray-800">
                             <td className="py-3 px-4 text-gray-400">{log.id}</td>
                             <td className="py-3 px-4">{log.originalText.substring(0, 50)}...</td>
