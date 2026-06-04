@@ -1,18 +1,34 @@
 import { useState } from 'react'
 import { useLogsStore } from '../stores/logsStore'
 import RiskBadge from '../components/RiskBadge'
+import { getRiskLevel } from "../utils"
+import type { Filter } from "../types"
 
 function AuditLogViewerPage() {
     const { logs } = useLogsStore()
     const [search, setSearch] = useState('')
-    const filteredLogs = logs.filter(log => log.originalText.toLowerCase().includes(search.toLowerCase()))
+    const [selectedRisk, setSelectedRisk] = useState<Filter>('Показать все')
+    const filteredLogs = logs.filter(log => log.originalText.toLowerCase().includes(search.toLowerCase()) && (selectedRisk === 'Показать все' || getRiskLevel(log.maskedText) === selectedRisk))
     return (
         <div className="overflow-x-auto">
-            <input type="text"
-                placeholder="Поиск по запросу..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white mb-4" />
+            <div className="p-4 md:p-8 mb-4">
+                <input type="text"
+                    placeholder="Поиск по запросу..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white mb-4" />
+                <select
+                    value={selectedRisk}
+                    onChange={(e) => setSelectedRisk(e.target.value as Filter)}
+                    className="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 text-white mb-4"
+                >
+                    <option value="Показать все">Показать все</option>
+                    <option value="safe">Safe</option>
+                    <option value="masked">Masked</option>
+                    <option value="high-risk">High Risk</option>
+                </select>
+            </div>
+
             <table className="w-full text-sm">
                 <thead>
                     <tr className="border-b border-gray-700 text-gray-400">

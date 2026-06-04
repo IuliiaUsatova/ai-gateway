@@ -14,3 +14,5 @@ export interface ChatInputProps {
     onChange: (value: string) => void,
     onSubmit: () => void
 }
+
+export type Filter = 'Показать все' | 'safe' | 'masked' | 'high-risk'
