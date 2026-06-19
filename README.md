@@ -8,7 +8,7 @@ The core idea:
 employee request -> PII masking -> AI provider -> audit log -> usage dashboard
 ```
 
-**Live demo:** [ai-gateway-sandy.vercel.app](https://ai-gateway-sandy.vercel.app)
+**Demo status:** the hosted demo is currently offline because the database is not running. The project can be reviewed locally using the setup instructions below.
 
 ## Why This Project Exists
 
